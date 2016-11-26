@@ -41,7 +41,6 @@ func getEventDetails(eventId: Int, forView: UICollectionView) {
         if let resp = response.result.value {
             let respJson = JSON(resp)
             Instance.instance.photosForEvent = respJson.arrayValue.count
-            print(Instance.instance.photosForEvent)
             forView.reloadData()
         }
     }

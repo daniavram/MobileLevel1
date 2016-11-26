@@ -18,7 +18,6 @@ class Instance {
     let codebehindLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(44.8210), longitude: CLLocationDegrees(20.4194))
     
     var photosForEvent: Int!
-    private var _eventPhotosViewController: EventImagesCollectionViewController!
     
     static let instance = Instance()
     
@@ -26,20 +25,11 @@ class Instance {
         eventsArray = [Event]()
         map = MKMapView()
         photosForEvent = 0
-        _eventPhotosViewController = EventImagesCollectionViewController()
     }
     
     func printEventsArray() {
         for iterator in eventsArray {
             iterator.printEvent()
-        }
-    }
-    
-    var eventPhotosViewController: EventImagesCollectionViewController {
-        get {
-            return _eventPhotosViewController
-        } set {
-            _eventPhotosViewController = newValue
         }
     }
 }

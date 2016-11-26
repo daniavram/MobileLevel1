@@ -34,13 +34,13 @@ class EventImagesCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("from collection view - numberOfSections. photosForEvent: \(Instance.instance.photosForEvent)")
+//        print("from collection view - numberOfSections. photosForEvent: \(Instance.instance.photosForEvent)")
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("from collection view: \(Instance.instance.photosForEvent)")
+//        print("from collection view: \(Instance.instance.photosForEvent)")
         return Instance.instance.photosForEvent
     }
 
