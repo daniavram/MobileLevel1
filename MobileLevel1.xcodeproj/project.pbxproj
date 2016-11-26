@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EA4AABA1DEA03DF006AF1CF /* EventImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AAB91DEA03DF006AF1CF /* EventImagesCollectionViewController.swift */; };
+		8EA4AABC1DEA053E006AF1CF /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4AABB1DEA053E006AF1CF /* EventCell.swift */; };
 		8ECAEB161DE7462000D5D0AF /* AlamoGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECAEB151DE7462000D5D0AF /* AlamoGet.swift */; };
 		8ECAEB181DE748B600D5D0AF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECAEB171DE748B600D5D0AF /* Event.swift */; };
 		8ECAEB1A1DE7514800D5D0AF /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECAEB191DE7514800D5D0AF /* Instance.swift */; };
@@ -43,6 +45,8 @@
 		3EBB281308252726F20DE1B2 /* Pods-MobileLevel1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileLevel1.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobileLevel1/Pods-MobileLevel1.release.xcconfig"; sourceTree = "<group>"; };
 		62A399BFAF06F618D74ABF12 /* Pods-MobileLevel1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileLevel1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileLevel1/Pods-MobileLevel1.debug.xcconfig"; sourceTree = "<group>"; };
 		72C92F25E311FAC38F26031B /* Pods_MobileLevel1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileLevel1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA4AAB91DEA03DF006AF1CF /* EventImagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventImagesCollectionViewController.swift; sourceTree = "<group>"; };
+		8EA4AABB1DEA053E006AF1CF /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		8ECAEB151DE7462000D5D0AF /* AlamoGet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamoGet.swift; sourceTree = "<group>"; };
 		8ECAEB171DE748B600D5D0AF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8ECAEB191DE7514800D5D0AF /* Instance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				8ECAEB151DE7462000D5D0AF /* AlamoGet.swift */,
 				8ECAEB191DE7514800D5D0AF /* Instance.swift */,
 				8ECAEB171DE748B600D5D0AF /* Event.swift */,
+				8EA4AAB91DEA03DF006AF1CF /* EventImagesCollectionViewController.swift */,
+				8EA4AABB1DEA053E006AF1CF /* EventCell.swift */,
 			);
 			path = MobileLevel1;
 			sourceTree = "<group>";
@@ -359,6 +365,8 @@
 				8ECAEB161DE7462000D5D0AF /* AlamoGet.swift in Sources */,
 				8EEDA3231DE741FB0040E027 /* ViewController.swift in Sources */,
 				8EEDA3211DE741FB0040E027 /* AppDelegate.swift in Sources */,
+				8EA4AABA1DEA03DF006AF1CF /* EventImagesCollectionViewController.swift in Sources */,
+				8EA4AABC1DEA053E006AF1CF /* EventCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

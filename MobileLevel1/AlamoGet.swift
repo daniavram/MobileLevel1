@@ -30,8 +30,19 @@ func getEvents() {
                 Instance.instance.eventsArray.append(tempEvent)
             }
             Instance.instance.map.addAnnotations(Instance.instance.eventsArray)
-            Instance.instance.printEventsArray()
+//            Instance.instance.printEventsArray()
         }
         
+    }
+}
+
+func getEventDetails(eventId: Int, forView: UICollectionView) {
+    Alamofire.request("http://private-60f2d-eventer2.apiary-mock.com/api/v1/events/\(eventId)").responseJSON { response in
+        if let resp = response.result.value {
+            let respJson = JSON(resp)
+            Instance.instance.photosForEvent = respJson.arrayValue.count
+            print(Instance.instance.photosForEvent)
+            forView.reloadData()
+        }
     }
 }
