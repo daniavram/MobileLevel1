@@ -12,19 +12,21 @@ import MapKit
 class Instance {
     
     var eventsArray: [Event]!
+    var eventDetails: [EventDetails]!
     var map: MKMapView!
+    
+    var eventDetailsIndex: Int!
     
     let belgradeLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(44.8071), longitude: CLLocationDegrees(20.4768))
     let codebehindLocation = CLLocationCoordinate2D(latitude: CLLocationDegrees(44.8210), longitude: CLLocationDegrees(20.4194))
-    
-    var photosForEvent: Int!
     
     static let instance = Instance()
     
     init() {
         eventsArray = [Event]()
         map = MKMapView()
-        photosForEvent = 0
+        eventDetails = [EventDetails]()
+        eventDetailsIndex = -1
     }
     
     func printEventsArray() {

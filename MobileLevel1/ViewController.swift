@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 private let reuseIdentifier = "EventCell"
-private let sectionInsets = UIEdgeInsets(top: 2.0, left: 2.0, bottom: 2.0, right: 2.0)
+private let sectionInsets = UIEdgeInsets(top: 4.0, left: 2.0, bottom: 4.0, right: 2.0)
 
 class ViewController: UIViewController, MKMapViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -48,22 +48,21 @@ class ViewController: UIViewController, MKMapViewDelegate, UICollectionViewDeleg
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         setMapRegion(location: (view.annotation?.coordinate)!, zoomLevel: 0.03)
-//        collectionView.isHidden = false
-        UIView.animate(withDuration: 5.0, delay: 3.0, options: .curveEaseIn, animations: {
-            self.collectionView.isHidden = false
-        }, completion: nil)
+
         if let annotation = view.annotation as? Event {
             getEventDetails(eventId: annotation.id, forView: eventPhotosCollectionView)
         }
         
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8, execute: {
+            self.collectionView.isHidden = false
+        })
+        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-//        collectionView.isHidden = true
-        UIView.animate(withDuration: 5.0, delay: 3.0, options: .curveEaseIn, animations: {
-            self.collectionView.isHidden = true
-        }, completion: nil)
-        Instance.instance.photosForEvent = 0
+        Instance.instance.eventDetails = [EventDetails]()
+        
+        collectionView.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotationParam: MKAnnotation) -> MKAnnotationView? {
@@ -91,19 +90,21 @@ class ViewController: UIViewController, MKMapViewDelegate, UICollectionViewDeleg
     }
 }
 
-extension ViewController {
+extension ViewController: UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Instance.instance.photosForEvent
+        return Instance.instance.eventDetails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? EventCell {
-            
-//            cell.imageView.image = 
+            cell.imageView.image = UIImage(named: "codebehind square negative")
+            if (Instance.instance.eventDetails.count > 0) {
+                cell.imageView.af_setImage(withURL: URL(string: Instance.instance.eventDetails[indexPath.row].imageUrl)! )
+            }
             
             return cell
         } else {
@@ -111,6 +112,14 @@ extension ViewController {
             return cell
         }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Instance.instance.eventDetailsIndex = indexPath.row
     }
     
 }

@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import MapKit
+import AlamofireImage
 
 func getEvents() {
     Alamofire.request("http://private-60f2d-eventer2.apiary-mock.com/api/v1/events").responseJSON { response in
@@ -30,7 +31,6 @@ func getEvents() {
                 Instance.instance.eventsArray.append(tempEvent)
             }
             Instance.instance.map.addAnnotations(Instance.instance.eventsArray)
-//            Instance.instance.printEventsArray()
         }
         
     }
@@ -40,8 +40,25 @@ func getEventDetails(eventId: Int, forView: UICollectionView) {
     Alamofire.request("http://private-60f2d-eventer2.apiary-mock.com/api/v1/events/\(eventId)").responseJSON { response in
         if let resp = response.result.value {
             let respJson = JSON(resp)
-            Instance.instance.photosForEvent = respJson.arrayValue.count
+            for (_, json) in respJson {
+//                let tempEventDetails = EventDetails(image: getPhoto(urlString: json["image"].stringValue, forView: forView)!, desc: json["description"].stringValue)
+                let tempEventDetails = EventDetails(imageUrl: json["image"].stringValue, desc: json["description"].stringValue)
+                Instance.instance.eventDetails.append(tempEventDetails)
+            }
             forView.reloadData()
         }
     }
+}
+
+func getPhoto(urlString: String, forView: UICollectionView) -> UIImage? {
+    var imgReturnValue = UIImage(named: "codebehind square negative")
+    
+    Alamofire.request(urlString).responseImage { response in
+        if let respImg = response.result.value {
+            imgReturnValue = respImg
+            forView.reloadData()
+        }        
+    }
+    
+    return imgReturnValue
 }
